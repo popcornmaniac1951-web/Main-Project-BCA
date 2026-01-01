@@ -1,50 +1,135 @@
 {% extends 'recommender/base.html' %}
 {% load static %}
 
-{% block title %}Register - Join SkillPath AI Professionals{% endblock %}
+{% block title %}Register - SkillPath AI Professional{% endblock %}
 
 {% block content %}
-<div class="animate-fadeIn container"
-    style="max-width: 500px; margin-top: var(--space-xxl); margin-bottom: var(--space-xxl);">
-    <div style="text-align: center; margin-bottom: var(--space-xl);">
-        <h1 style="font-size: 2.2rem; margin-bottom: var(--space-xs);">CREATE <span
-                style="color: var(--primary-green);">ACCOUNT</span></h1>
-        <p style="color: var(--text-muted);">Join our global network of future-ready professionals.</p>
-    </div>
-
-    <div class="card" style="padding: var(--space-xl);">
-        <form method="post">
-            {% csrf_token %}
-            {% for field in form %}
-            <div class="form-group" style="margin-bottom: var(--space-md);">
-                <label for="{{ field.id_for_label }}"
-                    style="display: block; margin-bottom: var(--space-xs); font-weight: 700; font-size: 0.9rem;">
-                    {{ field.label }}
-                </label>
-                {{ field }}
-                {% if field.help_text %}
-                <small
-                    style="display: block; margin-top: var(--space-xs); color: var(--text-muted); font-size: 0.75rem;">
-                    {{ field.help_text|safe }}
-                </small>
-                {% endif %}
-                {% if field.errors %}
-                <div style="color: var(--error); font-size: 0.8rem; margin-top: var(--space-xs); font-weight: 600;">
-                    {{ field.errors }}
+<style>
+    .auth-bg-dynamic {
+        background-image: url("{% static 'recommender/images/auth_bg.png' %}");
+    }
+</style>
+<div class="auth-wrapper animate-fadeIn">
+    <div class="auth-card">
+        <!-- Left Visual Panel -->
+        <div class="auth-visual-panel auth-bg-dynamic">
+            <div class="auth-visual-overlay"></div>
+            <div class="auth-visual-content">
+                <div>
+                    <span class="auth-work-label">Selected Works</span>
+                    <div id="authCarousel" style="position: relative;">
+                        <div class="carousel-item active" id="item1">
+                            <img src="{% static 'recommender/images/work_1.png' %}" alt="Work 1"
+                                style="width: 100%; border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+                        </div>
+                        <div class="carousel-item" id="item2" style="display: none;">
+                            <img src="{% static 'recommender/images/work_2.png' %}" alt="Work 2"
+                                style="width: 100%; border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+                        </div>
+                    </div>
+                    <div class="auth-carousel-nav">
+                        <div class="auth-nav-dot active" data-target="item1"></div>
+                        <div class="auth-nav-dot" data-target="item2"></div>
+                    </div>
                 </div>
-                {% endif %}
+
+                <div class="auth-user-preview auth-carousel-container">
+                    <div class="auth-avatar">
+                        <i class="fas fa-user"
+                            style="font-size: 1.5rem; color: rgba(255,255,255,0.5); margin: 10px;"></i>
+                    </div>
+                    <div>
+                        <div style="font-weight: 700; font-size: 0.95rem;">ADITHYAN TS</div>
+                        <div style="font-size: 0.75rem; color: rgba(255,255,255,0.6);">Developer</div>
+                    </div>
+                </div>
             </div>
-            {% endfor %}
-            <button type="submit" class="btn btn-primary"
-                style="width: 100%; padding: 1.1rem; margin-top: var(--space-md);">Register Now</button>
-        </form>
-        <div
-            style="margin-top: var(--space-xl); text-align: center; padding-top: var(--space-md); border-top: 1px solid var(--border-gray);">
-            <p style="font-size: 0.95rem; margin: 0;">
-                Already have an account? <a href="{% url 'login' %}"
-                    style="color: var(--primary-green); font-weight: 700; text-decoration: none;">Sign In</a>
-            </p>
+        </div>
+
+        <!-- Right Auth Panel -->
+        <div class="auth-form-panel">
+            <div class="auth-header">
+                <div style="font-weight: 800; font-size: 1.2rem; color: var(--primary-green); margin-bottom: 2rem;">
+                    SkillPath AI</div>
+                <h1>Join Professionals</h1>
+                <p style="color: var(--text-muted);">Welcome to SkillPath AI</p>
+            </div>
+
+            <form method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="auth-form-group">
+                    <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}"
+                        id="{{ field.id_for_label }}" placeholder="{{ field.label }}" class="form-control" required>
+                    {% if field.help_text %}
+                    <small style="display: block; margin-top: 5px; color: var(--text-muted); font-size: 0.7rem;">{{
+                        field.help_text|safe }}</small>
+                    {% endif %}
+                    {% if field.errors %}
+                    <div style="color: var(--error); font-size: 0.75rem; margin-top: 5px; font-weight: 600;">{{
+                        field.errors.0 }}</div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+
+                <button type="submit" class="btn-auth-primary" style="margin-top: 1rem;">Create Account</button>
+            </form>
+
+            <div class="auth-divider">
+                <span>or</span>
+            </div>
+
+            <button class="auth-google-btn">
+                <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" alt="Google"
+                    style="width: 18px;">
+                Sign up with Google
+            </button>
+
+            <div class="auth-footer">
+                Already have an account? <a href="{% url 'login' %}">Log in</a>
+            </div>
+
+            <div class="auth-social-icons">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-linkedin-in"></i>
+                <i class="fab fa-instagram"></i>
+            </div>
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const dots = document.querySelectorAll('.auth-nav-dot');
+        const items = document.querySelectorAll('.carousel-item');
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const targetId = dot.getAttribute('data-target');
+
+                // Update dots
+                dots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+
+                // Update items
+                items.forEach(item => {
+                    item.style.display = 'none';
+                    item.classList.remove('active');
+                });
+
+                const targetItem = document.getElementById(targetId);
+                targetItem.style.display = 'block';
+                targetItem.classList.add('active');
+            });
+        });
+
+        // Auto rotate
+        let currentIndex = 0;
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % dots.length;
+            dots[currentIndex].click();
+        }, 5000);
+    });
+</script>
 {% endblock %}

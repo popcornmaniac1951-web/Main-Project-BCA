@@ -8,10 +8,20 @@
     <meta name="description" content="SkillPath AI - Professional Career Development and Strategic Skill Analysis.">
     <meta name="keywords" content="career, AI, skills, mentorship, professional development">
     <title>{% block title %}SkillPath AI - Professional Career Development{% endblock %}</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Swiper.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Owl Carousel -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
     <link rel="stylesheet" href="{% static 'recommender/css/style.css' %}">
     {% block extra_css %}{% endblock %}
 </head>
@@ -103,12 +113,28 @@
         </div>
     </footer>
 
+    <!-- Swiper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- jQuery (Required for Owl) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Owl Carousel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        if (menuToggle && navLinks) {
-            menuToggle.addEventListener('click', () => {
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('menuToggle'); // Changed from 'mobile-menu-toggle' to 'menuToggle' to match existing HTML
+        const navLinks = document.getElementById('navLinks'); // Changed from '.nav-links' to 'navLinks' to match existing HTML
+
+        if (mobileMenuToggle && navLinks) { // Added check for existence
+            mobileMenuToggle.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
+                const icon = mobileMenuToggle.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
             });
         }
     </script>

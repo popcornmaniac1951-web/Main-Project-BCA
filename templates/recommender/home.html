@@ -3,46 +3,74 @@
 
 {% block content %}
 <div class="animate-fadeIn">
-    <!-- Hero Section -->
-    <section class="hero section-padding" style="padding-top: var(--space-xxl);">
-        <div class="geo-accent diamond-shape" style="top: 10%; left: 5%;"></div>
-        <div class="geo-accent diamond-shape" style="bottom: 10%; right: 5%; width: 150px; height: 150px;"></div>
-        <div class="container" style="display: flex; align-items: center; gap: var(--space-xl); flex-wrap: wrap;">
-            <div style="flex: 1; min-width: 300px;">
-                <h1 style="margin-bottom: var(--space-md);">BUILD YOUR <span
-                        style="color: var(--primary-green);">PROFESSIONAL</span> FUTURE</h1>
-                <p style="font-size: 1.2rem; margin-bottom: var(--space-lg); max-width: 600px;">
-                    Enterprise-grade career development pathing and strategic skill analysis designed for the modern
-                    professional landscape.
-                </p>
-                <div style="margin-bottom: var(--space-lg);">
-                    <form action="{% url 'search' %}" method="GET"
-                        style="display: flex; gap: var(--space-sm); max-width: 600px; flex-wrap: wrap;">
-                        <div style="flex: 1; position: relative; min-width: 250px;">
-                            <i class="fas fa-search"
-                                style="position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
-                            <input type="text" name="q" placeholder="Search career trajectories..."
-                                style="width: 100%; padding: 1.1rem 1.2rem 1.1rem 3rem; background: var(--white);">
-                        </div>
-                        <button type="submit" class="btn btn-primary"
-                            style="padding: 0 2.5rem; height: 3.5rem;">Search</button>
-                    </form>
+    <!-- Premium Hero Slider Section -->
+    <section class="hero-slider-section">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <!-- Slide 1 -->
+                <div class="swiper-slide">
+                    <div class="slide-bg"
+                        style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2071&auto=format&fit=crop');">
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <span class="brand-label">Evergreen</span>
+                        <h1 class="slide-headline">Nature. Design. Character.</h1>
+                        <p class="slide-description">Explore the intersection of organic growth and strategic career
+                            design with SkillPath AI.</p>
+                        <a href="{% url 'recommend' %}" class="btn btn-primary"
+                            style="padding: 1.2rem 2.5rem; border-radius: 50px;">Explore Collection</a>
+                    </div>
+                    <!-- Floating Info Card -->
+                    <div class="floating-card" style="bottom: 10%; right: 5%; width: 220px;">
+                        <div
+                            style="font-size: 0.7rem; font-weight: 800; color: var(--primary-green); margin-bottom: 5px;">
+                            ESTABLISHED 2024</div>
+                        <div style="font-size: 0.85rem; font-weight: 600;">Global Career Mentorship</div>
+                    </div>
                 </div>
-                <div style="display: flex; gap: var(--space-md); align-items: center; flex-wrap: wrap;">
-                    <a href="{% url 'recommend' %}" class="btn btn-outline">Start AI Analysis</a>
-                    <span style="color: var(--text-muted); font-size: 0.9rem;">or</span>
-                    <a href="{% url 'courses' %}"
-                        style="color: var(--primary-green); font-weight: 700; text-decoration: none; font-size: 0.95rem;">Explore
-                        Services</a>
+
+                <!-- Slide 2 -->
+                <div class="swiper-slide">
+                    <div class="slide-bg"
+                        style="background-image: url('https://images.unsplash.com/photo-1518133835878-5a93cc3f89e5?q=80&w=2070&auto=format&fit=crop');">
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <span class="brand-label">Strategic Growth</span>
+                        <h1 class="slide-headline">Growth. Strategy. Impact.</h1>
+                        <p class="slide-description">Scale your potential through data-driven analysis and personalized
+                            career pathways.</p>
+                        <a href="{% url 'courses' %}" class="btn btn-primary"
+                            style="padding: 1.2rem 2.5rem; border-radius: 50px;">View Gallery</a>
+                    </div>
+                    <!-- Floating Info Card -->
+                    <div class="floating-card" style="top: 20%; left: 5%; width: 200px;">
+                        <div
+                            style="font-size: 0.7rem; font-weight: 800; color: var(--primary-green); margin-bottom: 5px;">
+                            AI POWERED</div>
+                        <div style="font-size: 0.85rem; font-weight: 600;">Strategic Analysis Hub</div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="swiper-slide">
+                    <div class="slide-bg"
+                        style="background-image: url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=2074&auto=format&fit=crop');">
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <span class="brand-label">Future Mindset</span>
+                        <h1 class="slide-headline">Vision. Future. Reality.</h1>
+                        <p class="slide-description">Turn your professional aspirations into a reality with the world's
+                            most advanced AI mentor.</p>
+                        <a href="{% url 'register' %}" class="btn btn-primary"
+                            style="padding: 1.2rem 2.5rem; border-radius: 50px;">Join Movement</a>
+                    </div>
                 </div>
             </div>
-            <div style="flex: 1; position: relative; min-width: 300px;">
-                <div
-                    style="position: absolute; top: -20px; right: -20px; width: 100%; height: 100%; border: 2px solid var(--primary-green); z-index: 0; border-radius: var(--radius); opacity: 0.3;">
-                </div>
-                <img src="{% static 'recommender/images/hero.png' %}" alt="Corporate Infrastructure"
-                    style="width: 100%; position: relative; z-index: 1; border-radius: var(--radius); box-shadow: var(--shadow-medium);">
-            </div>
+            <!-- Pagination -->
+            <div class="swiper-pagination"></div>
         </div>
     </section>
 
@@ -171,13 +199,161 @@
     <!-- CTA Section -->
     <section class="cta-section section-padding">
         <div class="container">
-            <h2 style="color: var(--white); margin-bottom: var(--space-md);">Ready to Accelerate Your Career?</h2>
-            <p style="color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto var(--space-lg);">
-                Join thousands of professionals who have already mapped their way to success with SkillPath AI.
-            </p>
-            <a href="{% url 'register' %}" class="btn btn-primary" style="padding: 1.2rem 4rem; font-size: 1.1rem;">Get
-                Started Now</a>
+            <div class="home-start">
+                <h2 style="color: var(--white); margin-bottom: var(--space-md);">Ready to Accelerate Your Career?</h2>
+                <p style="color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto var(--space-lg);">
+                    Join thousands of professionals who have already mapped their way to success with SkillPath AI.
+                </p>
+                <a href="{% url 'register' %}" class="btn btn-primary"
+                    style="padding: 1.2rem 4rem; font-size: 1.1rem;">Get
+                    Started Now</a>
+            </div>
         </div>
-    </section>
+        <!-- User Testimonials Section -->
+        <section class="testimonials-section section-padding">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 60px;">
+                    <div class="grid-header" style="justify-content: center; margin-bottom: var(--space-sm);">
+                        <div class="line"></div>
+                        <h2 style="font-size: 2.8rem; margin: 0;">User <span
+                                style="background: linear-gradient(135deg, #1e7f43 0%, #34a853 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Testimonials</span>
+                        </h2>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 1.1rem;">See how SkillPath AI is transforming
+                        professional trajectories worldwide.</p>
+                </div>
+
+                <div class="owl-carousel testimonials-carousel">
+                    <!-- Testimonial 1 -->
+                    <div class="item">
+                        <div class="testimonial-card">
+                            <div class="testimonial-avatar">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&h=150&auto=format&fit=crop"
+                                    alt="User 1">
+                            </div>
+                            <h4>Sarah Jenkins</h4>
+                            <div class="testimonial-role">Career Switcher</div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <i class="fas fa-quote-left testimonial-quote-icon"></i>
+                            <p class="testimonial-text">“SkillPath AI helped me identify the right career path and build
+                                the exact skills I needed.”</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="item">
+                        <div class="testimonial-card">
+                            <div class="testimonial-avatar">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&h=150&auto=format&fit=crop"
+                                    alt="User 2">
+                            </div>
+                            <h4>Michael Chen</h4>
+                            <div class="testimonial-role">SkillPath AI User</div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <i class="fas fa-quote-left testimonial-quote-icon"></i>
+                            <p class="testimonial-text">“The AI guidance saved me months of confusion and
+                                trial-and-error in my tech journey.”</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="item">
+                        <div class="testimonial-card">
+                            <div class="testimonial-avatar">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=150&h=150&auto=format&fit=crop"
+                                    alt="User 3">
+                            </div>
+                            <h4>Elena Rodriguez</h4>
+                            <div class="testimonial-role">Student</div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <i class="fas fa-quote-left testimonial-quote-icon"></i>
+                            <p class="testimonial-text">“I switched into tech with confidence thanks to the precise
+                                pathing from SkillPath AI.”</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 4 (Duplicate for better looping feel) -->
+                    <div class="item">
+                        <div class="testimonial-card">
+                            <div class="testimonial-avatar">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=150&h=150&auto=format&fit=crop"
+                                    alt="User 4">
+                            </div>
+                            <h4>David Park</h4>
+                            <div class="testimonial-role">Software Developer</div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <i class="fas fa-quote-left testimonial-quote-icon"></i>
+                            <p class="testimonial-text">“The level of detail in the skill gap analysis is unlike any
+                                other platform I've used.”</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if (typeof Swiper !== 'undefined') {
+            const swiper = new Swiper(".mySwiper", {
+                loop: true,
+                speed: 1200,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true
+                },
+                grabCursor: true,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                on: {
+                    init: function () {
+                        // Optional: extra initialization logic
+                    }
+                }
+            });
+        }
+
+        // Testimonials Carousel
+        if (typeof jQuery !== 'undefined' && $('.testimonials-carousel').length > 0) {
+            $('.testimonials-carousel').owlCarousel({
+                loop: true,
+                center: true,
+                margin: 0,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                smartSpeed: 800,
+                dots: true,
+                nav: false,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    768: {
+                        items: 2
+                    },
+                    1170: {
+                        items: 3
+                    }
+                }
+            });
+        }
+    });
+</script>
 {% endblock %}
