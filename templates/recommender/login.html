@@ -1,0 +1,45 @@
+{% extends 'recommender/base.html' %}
+{% load static %}
+
+{% block title %}Login - SkillPath AI Professional Access{% endblock %}
+
+{% block content %}
+<div class="animate-fadeIn container"
+    style="max-width: 450px; margin-top: var(--space-xxl); margin-bottom: var(--space-xxl);">
+    <div style="text-align: center; margin-bottom: var(--space-xl);">
+        <h1 style="font-size: 2.2rem; margin-bottom: var(--space-xs);">PROFESSIONAL <span
+                style="color: var(--primary-green);">ACCESS</span></h1>
+        <p style="color: var(--text-muted);">Secure login for your career strategy dashboard.</p>
+    </div>
+
+    <div class="card" style="padding: var(--space-xl);">
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-group" style="margin-bottom: var(--space-md);">
+                <label for="{{ field.id_for_label }}"
+                    style="display: block; margin-bottom: var(--space-xs); font-weight: 700; font-size: 0.9rem;">
+                    {{ field.label }}
+                </label>
+                {{ field }}
+                {% if field.errors %}
+                <div style="color: var(--error); font-size: 0.8rem; margin-top: var(--space-xs); font-weight: 600;">
+                    {{ field.errors }}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary"
+                style="width: 100%; padding: 1.1rem; margin-top: var(--space-md);">Sign
+                In</button>
+        </form>
+        <div
+            style="margin-top: var(--space-xl); text-align: center; padding-top: var(--space-md); border-top: 1px solid var(--border-gray);">
+            <p style="font-size: 0.95rem; margin: 0;">
+                New to the platform? <a href="{% url 'register' %}"
+                    style="color: var(--primary-green); font-weight: 700; text-decoration: none;">Create an Account</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

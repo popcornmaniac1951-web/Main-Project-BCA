@@ -1,0 +1,50 @@
+{% extends 'recommender/base.html' %}
+{% load static %}
+
+{% block title %}Register - Join SkillPath AI Professionals{% endblock %}
+
+{% block content %}
+<div class="animate-fadeIn container"
+    style="max-width: 500px; margin-top: var(--space-xxl); margin-bottom: var(--space-xxl);">
+    <div style="text-align: center; margin-bottom: var(--space-xl);">
+        <h1 style="font-size: 2.2rem; margin-bottom: var(--space-xs);">CREATE <span
+                style="color: var(--primary-green);">ACCOUNT</span></h1>
+        <p style="color: var(--text-muted);">Join our global network of future-ready professionals.</p>
+    </div>
+
+    <div class="card" style="padding: var(--space-xl);">
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-group" style="margin-bottom: var(--space-md);">
+                <label for="{{ field.id_for_label }}"
+                    style="display: block; margin-bottom: var(--space-xs); font-weight: 700; font-size: 0.9rem;">
+                    {{ field.label }}
+                </label>
+                {{ field }}
+                {% if field.help_text %}
+                <small
+                    style="display: block; margin-top: var(--space-xs); color: var(--text-muted); font-size: 0.75rem;">
+                    {{ field.help_text|safe }}
+                </small>
+                {% endif %}
+                {% if field.errors %}
+                <div style="color: var(--error); font-size: 0.8rem; margin-top: var(--space-xs); font-weight: 600;">
+                    {{ field.errors }}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary"
+                style="width: 100%; padding: 1.1rem; margin-top: var(--space-md);">Register Now</button>
+        </form>
+        <div
+            style="margin-top: var(--space-xl); text-align: center; padding-top: var(--space-md); border-top: 1px solid var(--border-gray);">
+            <p style="font-size: 0.95rem; margin: 0;">
+                Already have an account? <a href="{% url 'login' %}"
+                    style="color: var(--primary-green); font-weight: 700; text-decoration: none;">Sign In</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

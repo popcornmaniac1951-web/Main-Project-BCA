@@ -1,0 +1,171 @@
+{% extends 'recommender/base.html' %}
+{% load static %}
+
+{% block title %}Dashboard - Strategic Command Center{% endblock %}
+
+{% block content %}
+<div class="animate-fadeIn container">
+    <!-- Professional Profile Header -->
+    <div class="card"
+        style="margin-bottom: var(--space-xl); padding: 0; overflow: hidden; display: flex; background: #fff; border-left: 10px solid var(--primary-green); position: relative;">
+        <!-- Subtle Grid Background -->
+        <div
+            style="position: absolute; inset: 0; background-image: radial-gradient(var(--border-gray) 1px, transparent 1px); background-size: 20px 20px; opacity: 0.3; pointer-events: none;">
+        </div>
+
+        <div
+            style="display: flex; align-items: center; gap: var(--space-lg); padding: var(--space-lg); flex: 1; position: relative; z-index: 1; flex-wrap: wrap;">
+            <div
+                style="width: 100px; height: 100px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; border: 2px solid var(--primary-green); box-shadow: var(--shadow-subtle);">
+                <i class="fas fa-user-tie" style="font-size: 3rem; color: var(--primary-green);"></i>
+            </div>
+            <div>
+                <h1 style="margin: 0; font-size: 2.2rem; margin-bottom: var(--space-xs); letter-spacing: -1px;">{{
+                    user.username|upper }}</h1>
+                <p
+                    style="font-weight: 700; color: var(--text-muted); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: var(--space-sm);">
+                    STATUS: <span style="color: var(--primary-green);">STRATEGIC TIER ACTIVE</span>
+                </p>
+                <div style="display: flex; gap: var(--space-sm); flex-wrap: wrap;">
+                    <div class="chip">Readiness: 84%</div>
+                    <div class="chip">Capability Index: 2.4k</div>
+                </div>
+            </div>
+        </div>
+        <div style="padding: var(--space-lg); display: flex; align-items: center; position: relative; z-index: 1;">
+            <a href="{% url 'recommend' %}" class="btn btn-primary"
+                style="padding: 1rem 2.5rem; box-shadow: 0 10px 20px rgba(30,127,67,0.2);">New Analysis Protocol</a>
+        </div>
+        <!-- Decorative Accent -->
+        <div class="geo-accent diamond-shape"
+            style="bottom: -30px; right: -30px; width: 100px; height: 100px; background: var(--primary-green); opacity: 0.05;">
+        </div>
+    </div>
+
+    <!-- Core Metrics Matrix -->
+    <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); margin-bottom: var(--space-xl);">
+        <div class="card" style="border-top: 4px solid var(--primary-green); padding: var(--space-lg);">
+            <div
+                style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-md);">
+                <h4
+                    style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1.5px; color: var(--text-muted); margin: 0;">
+                    Analytic Cycles</h4>
+                <i class="fas fa-sync-alt" style="color: var(--primary-green); opacity: 0.2; font-size: 1.2rem;"></i>
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 0.5rem;">
+                <span style="font-size: 3.5rem; font-weight: 800; line-height: 1; color: var(--text-dark);">{{
+                    recommendations.count }}</span>
+                <span
+                    style="color: var(--text-muted); font-weight: 700; font-size: 0.9rem; text-transform: uppercase;">Executed</span>
+            </div>
+            <p
+                style="font-size: 0.85rem; margin-top: var(--space-sm); color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">
+                Full
+                architecture mappings performed by the neural core.</p>
+        </div>
+
+        <div class="card" style="border-top: 4px solid var(--primary-green); padding: var(--space-lg);">
+            <div
+                style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-md);">
+                <h4
+                    style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1.5px; color: var(--text-muted); margin: 0;">
+                    Validated Skills</h4>
+                <i class="fas fa-shield-alt" style="color: var(--primary-green); opacity: 0.2; font-size: 1.2rem;"></i>
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 0.5rem;">
+                <span style="font-size: 3.5rem; font-weight: 800; line-height: 1; color: var(--text-dark);">28</span>
+                <span
+                    style="color: var(--text-muted); font-weight: 700; font-size: 0.9rem; text-transform: uppercase;">Profiled</span>
+            </div>
+            <p
+                style="font-size: 0.85rem; margin-top: var(--space-sm); color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">
+                Core
+                competencies recognized and mapped to trajectories.</p>
+        </div>
+
+        <div class="card" style="border-top: 4px solid var(--primary-green); padding: var(--space-lg);">
+            <div
+                style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-md);">
+                <h4
+                    style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1.5px; color: var(--text-muted); margin: 0;">
+                    Market Milestones</h4>
+                <i class="fas fa-award" style="color: var(--primary-green); opacity: 0.2; font-size: 1.2rem;"></i>
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 0.5rem;">
+                <span style="font-size: 3.5rem; font-weight: 800; line-height: 1; color: var(--text-dark);">12</span>
+                <span
+                    style="color: var(--text-muted); font-weight: 700; font-size: 0.9rem; text-transform: uppercase;">Achieved</span>
+            </div>
+            <p
+                style="font-size: 0.85rem; margin-top: var(--space-sm); color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">
+                Critical
+                achievements in your professional infrastructure development.</p>
+        </div>
+    </div>
+
+    <!-- Analysis Log: Strategic Activity Feed -->
+    <div style="margin-bottom: var(--space-xxl);">
+        <div
+            style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-lg); flex-wrap: wrap; gap: var(--space-sm);">
+            <div class="grid-header" style="margin: 0;">
+                <div class="line"></div>
+                <h3>STRATEGIC ACTIVITY FEED</h3>
+            </div>
+            <span
+                style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Showing
+                last {{ recommendations.count }} entries</span>
+        </div>
+
+        {% if recommendations %}
+        <div style="display: grid; gap: var(--space-sm);">
+            {% for rec in recommendations %}
+            <div class="card"
+                style="padding: var(--space-md) var(--space-lg); display: flex; align-items: center; justify-content: space-between; transition: all 0.3s ease; border: 1px solid var(--border-gray); flex-wrap: wrap; gap: var(--space-md);">
+                <div style="display: flex; align-items: center; gap: var(--space-md); flex: 1; min-width: 250px;">
+                    <div class="icon-box">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <div>
+                        <div
+                            style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 0.2rem;">
+                            {{ rec.created_at|date:"d M Y" }}</div>
+                        <h4 style="margin: 0; font-size: 1.1rem; color: var(--text-dark);">Trajectory Analysis #{{
+                            rec.pk }}</h4>
+                    </div>
+                    <div style="margin-left: auto; padding-right: var(--space-md);">
+                        <span
+                            style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); margin-right: var(--space-sm);">Configuration:</span>
+                        <span class="chip" style="background: var(--bg-soft);">{{ rec.education_level }}</span>
+                    </div>
+                </div>
+                <div style="display: flex; gap: var(--space-sm); align-items: center;">
+                    <a href="{% url 'result' rec.pk %}" class="btn btn-outline"
+                        style="padding: 0.6rem 1.5rem; font-size: 0.8rem;">View Report</a>
+                    <form action="{% url 'delete_recommendation' rec.pk %}" method="post"
+                        onsubmit="return confirm('Archive this strategic entry?');" style="margin: 0;">
+                        {% csrf_token %}
+                        <button type="submit"
+                            style="background: none; border: 1px solid rgba(231, 76, 60, 0.1); color: #e74c3c; padding: 0.6rem 1rem; border-radius: var(--radius); cursor: pointer; transition: all 0.3s ease;">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="card"
+            style="text-align: center; padding: var(--space-xxl); border: 2px dashed var(--border-gray); background: transparent;">
+            <i class="fas fa-history"
+                style="font-size: 3rem; color: var(--border-gray); margin-bottom: var(--space-md);"></i>
+            <h3 style="margin-bottom: var(--space-sm);">No Strategic Data Logged</h3>
+            <p
+                style="color: var(--text-muted); margin-bottom: var(--space-lg); max-width: 400px; margin-left: auto; margin-right: auto;">
+                Initiate your first analysis protocol to begin building your career infrastructure history.</p>
+            <a href="{% url 'recommend' %}" class="btn btn-primary">Start Analysis Protocol</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

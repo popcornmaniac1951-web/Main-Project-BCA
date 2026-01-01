@@ -1,0 +1,183 @@
+{% extends 'recommender/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="animate-fadeIn">
+    <!-- Hero Section -->
+    <section class="hero section-padding" style="padding-top: var(--space-xxl);">
+        <div class="geo-accent diamond-shape" style="top: 10%; left: 5%;"></div>
+        <div class="geo-accent diamond-shape" style="bottom: 10%; right: 5%; width: 150px; height: 150px;"></div>
+        <div class="container" style="display: flex; align-items: center; gap: var(--space-xl); flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px;">
+                <h1 style="margin-bottom: var(--space-md);">BUILD YOUR <span
+                        style="color: var(--primary-green);">PROFESSIONAL</span> FUTURE</h1>
+                <p style="font-size: 1.2rem; margin-bottom: var(--space-lg); max-width: 600px;">
+                    Enterprise-grade career development pathing and strategic skill analysis designed for the modern
+                    professional landscape.
+                </p>
+                <div style="margin-bottom: var(--space-lg);">
+                    <form action="{% url 'search' %}" method="GET"
+                        style="display: flex; gap: var(--space-sm); max-width: 600px; flex-wrap: wrap;">
+                        <div style="flex: 1; position: relative; min-width: 250px;">
+                            <i class="fas fa-search"
+                                style="position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                            <input type="text" name="q" placeholder="Search career trajectories..."
+                                style="width: 100%; padding: 1.1rem 1.2rem 1.1rem 3rem; background: var(--white);">
+                        </div>
+                        <button type="submit" class="btn btn-primary"
+                            style="padding: 0 2.5rem; height: 3.5rem;">Search</button>
+                    </form>
+                </div>
+                <div style="display: flex; gap: var(--space-md); align-items: center; flex-wrap: wrap;">
+                    <a href="{% url 'recommend' %}" class="btn btn-outline">Start AI Analysis</a>
+                    <span style="color: var(--text-muted); font-size: 0.9rem;">or</span>
+                    <a href="{% url 'courses' %}"
+                        style="color: var(--primary-green); font-weight: 700; text-decoration: none; font-size: 0.95rem;">Explore
+                        Services</a>
+                </div>
+            </div>
+            <div style="flex: 1; position: relative; min-width: 300px;">
+                <div
+                    style="position: absolute; top: -20px; right: -20px; width: 100%; height: 100%; border: 2px solid var(--primary-green); z-index: 0; border-radius: var(--radius); opacity: 0.3;">
+                </div>
+                <img src="{% static 'recommender/images/hero.png' %}" alt="Corporate Infrastructure"
+                    style="width: 100%; position: relative; z-index: 1; border-radius: var(--radius); box-shadow: var(--shadow-medium);">
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="section-padding">
+        <div class="container" style="display: flex; gap: var(--space-xl); align-items: center; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px;">
+                <div class="grid-header" style="margin-bottom: var(--space-md);">
+                    <div class="line"></div>
+                    <h2 style="font-size: 2.5rem; margin: 0;">Advanced Career Infrastructure</h2>
+                </div>
+                <p>
+                    SkillPath AI provides a professional framework for career evolution. Our system analyzes market
+                    trends, industry requirements, and individual potential to deliver structured growth maps.
+                </p>
+                <p>
+                    We bridge the gap between current capabilities and future aspirations through data-driven
+                    recommendations and enterprise-ready learning paths.
+                </p>
+            </div>
+            <div
+                style="flex: 1; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md); min-width: 300px;">
+                <div class="card" style="padding: var(--space-lg); text-align: center;">
+                    <i class="fas fa-layer-group"
+                        style="font-size: 2rem; color: var(--primary-green); margin-bottom: var(--space-sm);"></i>
+                    <h4 style="margin-bottom: var(--space-xs);">Scalable</h4>
+                    <p style="font-size: 0.9rem; margin: 0;">Growth that adapts to your career pace.</p>
+                </div>
+                <div class="card" style="padding: var(--space-lg); text-align: center;">
+                    <i class="fas fa-shield-alt"
+                        style="font-size: 2rem; color: var(--primary-green); margin-bottom: var(--space-sm);"></i>
+                    <h4 style="margin-bottom: var(--space-xs);">Reliable</h4>
+                    <p style="font-size: 0.9rem; margin: 0;">Proven strategies for professional success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="section-padding" style="background: var(--bg-soft); position: relative; overflow: hidden;">
+        <div class="geo-accent diamond-shape" style="top: -50px; left: -50px; opacity: 0.1;"></div>
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <p>Comprehensive solutions for professional development.</p>
+            </div>
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-lg);">
+                <!-- Service 1 -->
+                <div class="card" style="padding: var(--space-lg);">
+                    <div style="color: var(--primary-green); font-size: 2.5rem; margin-bottom: var(--space-sm);">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Skill Gap Analysis</h3>
+                    <p>Detailed evaluation of your current skill set against industry standards to identify key areas
+                        for development.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="card" style="padding: var(--space-lg);">
+                    <div style="color: var(--primary-green); font-size: 2.5rem; margin-bottom: var(--space-sm);">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3>Career Roadmap</h3>
+                    <p>Personalized strategic plans detailing the steps required to transition into your target
+                        professional role.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="card" style="padding: var(--space-lg);">
+                    <div style="color: var(--primary-green); font-size: 2.5rem; margin-bottom: var(--space-sm);">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Curated Learning</h3>
+                    <p>Direct links to top-tier courses and certifications recognized by leading global enterprises.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section-padding">
+        <div class="container">
+            <div style="display: flex; gap: var(--space-xl); align-items: center; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px;">
+                    <img src="{% static 'recommender/images/service.png' %}" alt="Professional Analysis"
+                        style="width: 100%; border-radius: var(--radius); box-shadow: var(--shadow-medium);">
+                </div>
+                <div style="flex: 1; min-width: 300px;">
+                    <div class="grid-header" style="margin-bottom: var(--space-md);">
+                        <div class="line"></div>
+                        <h2 style="font-size: 2.5rem; margin: 0;">Why Choose SkillPath?</h2>
+                    </div>
+                    <ul style="list-style: none; margin-top: var(--space-md); padding: 0;">
+                        <li style="margin-bottom: var(--space-md); display: flex; gap: var(--space-sm);">
+                            <i class="fas fa-check-circle" style="color: var(--primary-green); margin-top: 0.3rem;"></i>
+                            <div>
+                                <h4 style="margin: 0;">Enterprise-Ready Logic</h4>
+                                <p style="margin: 0; font-size: 0.95rem;">Our algorithms are tuned to current corporate
+                                    hiring requirements.
+                                </p>
+                            </div>
+                        </li>
+                        <li style="margin-bottom: var(--space-md); display: flex; gap: var(--space-sm);">
+                            <i class="fas fa-check-circle" style="color: var(--primary-green); margin-top: 0.3rem;"></i>
+                            <div>
+                                <h4 style="margin: 0;">Data-Driven Results</h4>
+                                <p style="margin: 0; font-size: 0.95rem;">Recommendations based on real-world market
+                                    intelligence.</p>
+                            </div>
+                        </li>
+                        <li style="margin-bottom: var(--space-md); display: flex; gap: var(--space-sm);">
+                            <i class="fas fa-check-circle" style="color: var(--primary-green); margin-top: 0.3rem;"></i>
+                            <div>
+                                <h4 style="margin: 0;">Seamless Integration</h4>
+                                <p style="margin: 0; font-size: 0.95rem;">Easy-to-use platform that fits into your
+                                    professional routine.</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="{% url 'register' %}" class="btn btn-primary" style="margin-top: var(--space-md);">Join the
+                        Network</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section section-padding">
+        <div class="container">
+            <h2 style="color: var(--white); margin-bottom: var(--space-md);">Ready to Accelerate Your Career?</h2>
+            <p style="color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto var(--space-lg);">
+                Join thousands of professionals who have already mapped their way to success with SkillPath AI.
+            </p>
+            <a href="{% url 'register' %}" class="btn btn-primary" style="padding: 1.2rem 4rem; font-size: 1.1rem;">Get
+                Started Now</a>
+        </div>
+    </section>
+</div>
+{% endblock %}

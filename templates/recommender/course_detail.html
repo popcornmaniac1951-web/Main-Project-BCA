@@ -1,0 +1,152 @@
+{% extends 'recommender/base.html' %}
+{% load static %}
+
+{% block title %}Training Protocol: {{ course.title }} - SkillPath AI{% endblock %}
+
+{% block content %}
+<div class="animate-fadeIn container">
+    <!-- Breadcrumb & Action -->
+    <div
+        style="margin-bottom: var(--space-xl); display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-lg); flex-wrap: wrap; gap: var(--space-md);">
+        <a href="{% url 'courses' %}" class="btn btn-outline" style="padding: 0.6rem 1.5rem; font-size: 0.8rem;">
+            <i class="fas fa-arrow-left"></i> Service Catalog
+        </a>
+        <span
+            style="font-weight: 700; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;">
+            Protocol ID: EDU-{{ course.pk }}-{{ course.category|slice:":3"|upper }}
+        </span>
+    </div>
+
+    <!-- Hero Specifications -->
+    <div class="card"
+        style="padding: 0; overflow: hidden; margin-bottom: var(--space-xl); border-top: 6px solid var(--primary-green);">
+        <div style="display: flex; flex-wrap: wrap;">
+            <div
+                style="padding: var(--space-xl); flex: 1; border-right: 1px solid var(--border-gray); min-width: 350px;">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: var(--space-md);">
+                    <div class="chip" style="background: rgba(30, 127, 67, 0.1); color: var(--primary-green);">
+                        {{ course.category }}
+                    </div>
+                    <span style="color: var(--text-muted); font-size: 0.85rem; font-weight: 600;">
+                        <i class="far fa-clock" style="margin-right: 4px;"></i> {{ course.duration }}
+                    </span>
+                </div>
+                <h1 style="font-size: 2.5rem; margin-bottom: var(--space-md); margin-top: 0; letter-spacing: -1px;">{{
+                    course.title }}</h1>
+                <p
+                    style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted); margin-bottom: var(--space-xl);">
+                    {{ course.description }}
+                </p>
+
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-xl);">
+                    <div>
+                        <h4
+                            style="font-size: 0.85rem; border-bottom: 1px solid var(--border-gray); padding-bottom: var(--space-sm); margin-bottom: var(--space-md); margin-top: 0; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dark);">
+                            <i class="fas fa-bullseye" style="color: var(--primary-green); margin-right: 10px;"></i>
+                            LEARNING OBJECTIVES
+                        </h4>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            {% for point in course.learning_points %}
+                            <li
+                                style="font-size: 0.95rem; margin-bottom: var(--space-sm); display: flex; gap: 12px; align-items: flex-start;">
+                                <i class="fas fa-check-circle"
+                                    style="color: var(--primary-green); margin-top: 3px; font-size: 0.9rem;"></i>
+                                <span style="font-weight: 500;">{{ point }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div>
+                        <h4
+                            style="font-size: 0.85rem; border-bottom: 1px solid var(--border-gray); padding-bottom: var(--space-sm); margin-bottom: var(--space-md); margin-top: 0; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dark);">
+                            <i class="fas fa-microchip" style="color: var(--primary-green); margin-right: 10px;"></i>
+                            TECHNICAL STACK
+                        </h4>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                            {% for tool in course.tools_covered.split %}
+                            <div class="chip"
+                                style="background: var(--bg-soft); color: var(--text-dark); border: 1px solid var(--border-gray);">
+                                {{ tool|cut:"," }}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                style="background: var(--bg-soft); padding: var(--space-xl); min-width: 320px; flex: 0.4; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+                <div class="icon-box"
+                    style="width: 100px; height: 100px; margin-bottom: var(--space-lg); border: 2px solid var(--primary-green); background: var(--white);">
+                    <i class="fas {% if course.difficulty == 'Beginner' %}fa-seedling{% elif course.difficulty == 'Intermediate' %}fa-project-diagram{% else %}fa-microchip{% endif %}"
+                        style="font-size: 2.5rem; color: var(--primary-green);"></i>
+                </div>
+                <h3
+                    style="margin-bottom: var(--space-xs); font-size: 1.1rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">
+                    Protocol Intensity</h3>
+                <div
+                    style="font-size: 2.2rem; font-weight: 800; color: var(--text-dark); margin-bottom: var(--space-xl); letter-spacing: -1px;">
+                    {{ course.difficulty|upper }}</div>
+
+                <div
+                    style="width: 100%; background: var(--white); padding: var(--space-lg); border-radius: var(--radius); border: 1px solid var(--border-gray);">
+                    <div
+                        style="font-weight: 800; font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: var(--space-md); letter-spacing: 1px;">
+                        Career Alignment</div>
+                    <div style="display: flex; flex-direction: column; gap: var(--space-sm);">
+                        {% for career in course.related_careers.all %}
+                        <div style="display: flex; align-items: center; gap: 10px; text-align: left;">
+                            <i class="fas fa-check" style="color: var(--primary-green); font-size: 0.8rem;"></i>
+                            <span style="font-weight: 700; font-size: 0.9rem; color: var(--text-dark);">{{ career.title
+                                }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Curriculum Roadmap -->
+    <div style="margin-bottom: var(--space-xxl);">
+        <div class="grid-header" style="margin-bottom: var(--space-xl);">
+            <div class="line"></div>
+            <h3>CURRICULUM ROADMAP</h3>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-lg);">
+            {% for step in course.steps.all %}
+            <div class="card"
+                style="position: relative; padding: var(--space-xl); padding-top: 3.5rem; height: 100%; display: flex; flex-direction: column;">
+                <div
+                    style="position: absolute; top: -1.2rem; left: var(--space-lg); width: 3.5rem; height: 3.5rem; background: var(--primary-green); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.25rem; border-radius: var(--radius-sm); border: 4px solid var(--white); box-shadow: var(--shadow-subtle);">
+                    {{ step.step_number|stringformat:"02d" }}
+                </div>
+                <h4 style="font-size: 1.2rem; margin-bottom: var(--space-sm); color: var(--text-dark); margin-top: 0;">
+                    {{ step.title }}</h4>
+                <p style="font-size: 0.95rem; color: var(--text-muted); margin: 0; line-height: 1.6; flex: 1;">
+                    {{ step.description }}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Final Call to Action -->
+    <div
+        style="background: var(--text-dark); border-radius: var(--radius); padding: var(--space-xxl); text-align: center; color: white; margin-bottom: var(--space-xxl); position: relative; overflow: hidden;">
+        <div class="geo-accent diamond-shape"
+            style="top: -50px; right: -50px; opacity: 0.1; background: white; width: 200px; height: 200px;"></div>
+        <h2
+            style="color: white; margin-bottom: var(--space-sm); font-size: 2.2rem; letter-spacing: -1px; margin-top: 0;">
+            Accelerate Your Market Value</h2>
+        <p
+            style="color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto var(--space-xl); font-size: 1.1rem; line-height: 1.7;">
+            This training protocol will enhance your capability scores and align your profile with high-demand career
+            trajectories.
+        </p>
+        <button class="btn btn-primary" style="padding: 1.2rem 4rem; font-size: 1.1rem;">Enroll in Protocol</button>
+    </div>
+</div>
+{% endblock %}

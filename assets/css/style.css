@@ -1,0 +1,229 @@
+/********** ecommerce CSS **********/
+
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+:root {
+    --font-primary: "Space Grotesk", sans-serif;
+
+    --color-dk-navy-blue: #001118;
+    --color-lg-blue-gary: #01131a;
+    --color-teal: #12717f;
+    --color-white: #fff;
+    --color-black: #000;
+}
+
+a,
+button {
+    -webkit-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+    background-color: transparent;
+    border: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.container-fluid {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+
+}
+
+/* HEADER============================ */
+
+/*------------------------section-amazon-top-header----------------------- */
+
+.amazon-top-header {
+    background-color: #505b5b;
+    padding: 20px;
+}
+
+.amazon-top-section {
+    justify-content: space-around;
+}
+
+.amazon-logo {
+    width: 100px;
+}
+
+.search-bar {
+    background-color: var(--color-white);
+    position: relative;
+}
+
+.ser-amazon {
+    padding: 5px;
+    border: none;
+    font-size: 16px;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    text-transform: capitalize;
+    color: var(--color-black);
+    border-radius: 5px;
+}
+
+.ser-btn i {
+    right: 10px;
+    position: absolute;
+    top: 35%;
+}
+
+.search-area-icon {
+    font-size: 25px;
+    color: var(--color-white);
+    cursor: pointer;
+    margin: 0px 10px;
+    position: relative;
+}
+
+.ser-drop-down{
+    position: absolute;
+    top: 100%;
+    right: 0px;
+    background-color: var(--color-white);
+    width: 300px;
+    height: 300px;
+    overflow-y: scroll;
+    display: none;
+    padding: 20px;
+    z-index: 99;
+}
+
+
+.ser-drop-down li a{
+    font-size: 18px;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    text-transform: capitalize;
+    color: var(--color-black);
+    padding: 10px;
+    display: block;
+}
+
+.search-area-icon:hover .ser-drop-down{
+    display: block;
+}
+
+.nav-bar-are {
+    list-style: none;
+}
+
+.nav-bar-are li {
+    position: relative;
+}
+
+.nav-bar-are li a {
+    text-decoration: none;
+    color: var(--color-white);
+    font-size: 16px;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    text-transform: capitalize;
+    margin: 0px 10px;
+    position: relative;
+}
+
+.nav-bar-are li a:hover {
+    color: orange;
+}
+
+.nav-bar-are li a::after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    bottom: -5px;
+    width: 0px;
+    height: 2px;
+    background-color: orange;
+    transition: all 0.3s ease 0s;
+}
+
+.nav-bar-are li a:hover::after {
+    width: 100%;
+}
+
+
+.drop-down {
+    list-style: none;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    background-color: var(--color-black);
+    width: 200px;
+    text-align: left;
+    padding: 10px;
+    z-index: 999;
+
+}
+
+.nav-bar-are li:hover .drop-down {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.3s ease 0s;
+
+}
+
+
+/* INDEX-PAGE============================ */
+
+/* ----------------section-hero-section--------------------*/
+
+
+.swiper-slide {
+    background-color: antiquewhite;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-content {
+    color: var(--color-black);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.swiper-content h1 {
+    font-size: 40px;
+    font-weight: 700;
+    font-family: var(--font-primary);
+    text-transform: capitalize;
+}
+
+.swiper-content h2 {
+    font-size: 40px;
+    font-weight: 700;
+    font-family: var(--font-primary);
+    text-transform: capitalize;
+
+}
+
+.swiper-content p {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: var(--font-primary);
+    text-transform: capitalize;
+    max-width: 600px;
+}

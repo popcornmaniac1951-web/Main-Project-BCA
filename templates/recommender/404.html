@@ -1,0 +1,25 @@
+{% extends 'recommender/base.html' %}
+
+{% block title %}404 - Strategic Link Severed{% endblock %}
+
+{% block content %}
+<div class="animate-fadeIn container"
+    style="min-height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center;">
+    <div>
+        <h1 style="font-size: 8rem; margin-bottom: 0; line-height: 1; color: var(--primary-green); opacity: 0.1;">404
+        </h1>
+        <h2 style="font-size: 2.22rem; margin-top: -3rem; margin-bottom: var(--space-md); letter-spacing: -1px;">
+            STRATEGIC LINK <span style="color: var(--primary-green);">SEVERED</span></h2>
+        <p
+            style="color: var(--text-muted); max-width: 500px; margin: 0 auto var(--space-xl); font-size: 1.1rem; line-height: 1.7;">
+            The requested data packet is missing from our professional network infrastructure. The destination may have
+            been
+            decommissioned or relocated.
+        </p>
+        <div style="display: flex; gap: var(--space-md); justify-content: center;">
+            <a href="{% url 'home' %}" class="btn btn-primary" style="padding: 1rem 3rem;">Return to Origin</a>
+            <a href="{% url 'contact' %}" class="btn btn-outline" style="padding: 1rem 3rem;">Contact Support</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

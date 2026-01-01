@@ -1,0 +1,135 @@
+{% extends 'recommender/base.html' %}
+{% load static %}
+
+{% block title %}Contact - SkillPath AI Professional Advisory{% endblock %}
+
+{% block content %}
+<div class="animate-fadeIn container">
+    <!-- Header -->
+    <div style="margin-bottom: var(--space-xl); text-align: center; padding-top: var(--space-lg);">
+        <h1 style="font-size: 2.5rem; margin-bottom: var(--space-xs);">CONTACT <span
+                style="color: var(--primary-green);">US</span></h1>
+        <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto; font-size: 1.1rem; line-height: 1.7;">
+            Our strategic advisory team is available to discuss your career infrastructure and professional
+            development needs.
+        </p>
+    </div>
+
+    <!-- Contact Section -->
+    <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: var(--space-xl); margin-bottom: var(--space-xxl);">
+        <!-- Contact Form -->
+        <div class="card" style="padding: var(--space-xl);">
+            <div class="grid-header" style="margin-bottom: var(--space-lg);">
+                <div class="line"></div>
+                <h3>SEND A MESSAGE</h3>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                <div
+                    style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-bottom: var(--space-md);">
+                    <div class="form-group">
+                        <label
+                            style="font-weight: 700; font-size: 0.85rem; margin-bottom: var(--space-xs); display: block; color: var(--text-dark);">Full
+                            Name</label>
+                        <input type="text" name="name" placeholder="John Doe" required class="form-control"
+                            style="padding: 0.8rem;">
+                    </div>
+                    <div class="form-group">
+                        <label
+                            style="font-weight: 700; font-size: 0.85rem; margin-bottom: var(--space-xs); display: block; color: var(--text-dark);">Email
+                            Address</label>
+                        <input type="email" name="email" placeholder="john@enterprise.com" required class="form-control"
+                            style="padding: 0.8rem;">
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom: var(--space-md);">
+                    <label
+                        style="font-weight: 700; font-size: 0.85rem; margin-bottom: var(--space-xs); display: block; color: var(--text-dark);">Subject</label>
+                    <select name="subject" class="form-control" style="padding: 0.8rem; height: auto;">
+                        <option>General Strategy Inquiry</option>
+                        <option>Technical Architecture Support</option>
+                        <option>Partnership Opportunities</option>
+                        <option>Enterprise Solutions</option>
+                    </select>
+                </div>
+                <div class="form-group" style="margin-bottom: var(--space-lg);">
+                    <label
+                        style="font-weight: 700; font-size: 0.85rem; margin-bottom: var(--space-xs); display: block; color: var(--text-dark);">Message</label>
+                    <textarea name="message" rows="5"
+                        placeholder="How can we assist with your professional development?" required
+                        class="form-control" style="padding: 0.8rem;"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">Submit
+                    Inquiry</button>
+            </form>
+        </div>
+
+        <!-- Contact Info & Map -->
+        <div>
+            <div class="card" style="padding: var(--space-xl); margin-bottom: var(--space-lg);">
+                <div class="grid-header" style="margin-bottom: var(--space-lg);">
+                    <div class="line"></div>
+                    <h3>CORPORATE INFO</h3>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: var(--space-lg);">
+                    <div style="display: flex; gap: var(--space-md);">
+                        <div class="icon-box"
+                            style="flex-shrink: 0; background: var(--white); border: 1px solid var(--border-gray);">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin: 0; font-size: 0.95rem; color: var(--text-dark);">Global Headquarters</h4>
+                            <p
+                                style="margin: 0.3rem 0 0; font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">
+                                123 Professional Way, Innovation District<br>New York, NY 10001</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: var(--space-md);">
+                        <div class="icon-box"
+                            style="flex-shrink: 0; background: var(--white); border: 1px solid var(--border-gray);">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin: 0; font-size: 0.95rem; color: var(--text-dark);">Support Line</h4>
+                            <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: var(--text-muted);">+1 (555)
+                                123-4567</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: var(--space-md);">
+                        <div class="icon-box"
+                            style="flex-shrink: 0; background: var(--white); border: 1px solid var(--border-gray);">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin: 0; font-size: 0.95rem; color: var(--text-dark);">Digital Inquiries</h4>
+                            <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: var(--text-muted);">
+                                info@skillpath-ai.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Placeholder -->
+            <div class="card"
+                style="padding: 0; height: 260px; overflow: hidden; position: relative; border: 1px solid var(--border-gray);">
+                <div
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-soft); opacity: 0.5;">
+                </div>
+                <div
+                    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 1;">
+                    <i class="fas fa-map-marked-alt"
+                        style="font-size: 2.5rem; color: var(--primary-green); opacity: 0.3; margin-bottom: var(--space-sm);"></i>
+                    <p
+                        style="color: var(--text-muted); font-size: 0.75rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">
+                        Map Protocol Offline</p>
+                </div>
+                <!-- Subtle grid overlay -->
+                <div
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(var(--border-gray) 1px, transparent 1px); background-size: 20px 20px; opacity: 0.3;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

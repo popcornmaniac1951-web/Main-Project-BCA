@@ -1,0 +1,97 @@
+{% extends 'recommender/base.html' %}
+{% load static %}
+
+{% block title %}Career Assessment - Analysis Protocol{% endblock %}
+
+{% block content %}
+<div class="form-group" style="padding-top: 2rem;">
+    <label
+        style="display: flex; align-items: center; gap: 1.2rem; cursor: pointer; font-weight: 700; font-size: 0.9rem;">
+        <input type="checkbox" name="leadership_interest"
+            style="width: 20px; height: 20px; accent-color: var(--primary-green);">
+        LEADERSHIP & STRATEGIC OVERSIGHT INTEREST
+    </label>
+</div>
+</div>
+</div>
+
+<div style="text-align: center; margin-top: 5rem; border-top: 1px solid var(--border-gray); padding-top: 4rem;">
+    <button type="submit" class="btn btn-primary" style="padding: 1.2rem 4.5rem; font-size: 1.1rem;">Execute Analysis
+        Protocol</button>
+    <p style="margin-top: 1.5rem; color: var(--text-muted); font-size: 0.85rem;">
+        Note: AI correlate logic will process all configuration points to identify optimal career
+        vectors.
+    </p>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+<style>
+    .custom-check-card {
+        padding: 1.5rem;
+        border: 1px solid var(--border-gray);
+        border-radius: 8px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .check-box {
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--border-gray);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        color: #fff;
+    }
+
+    .custom-check-input:checked+.custom-check-card {
+        border-color: var(--primary-green);
+        background: rgba(30, 127, 67, 0.05);
+        color: var(--primary-green);
+    }
+
+    .custom-check-input:checked+.custom-check-card .check-box {
+        background: var(--primary-green);
+        border-color: var(--primary-green);
+    }
+
+    .custom-check-card:hover {
+        border-color: var(--primary-green);
+        background: rgba(30, 127, 67, 0.02);
+    }
+
+    .custom-radio-card {
+        padding: 1rem;
+        border: 1px solid var(--border-gray);
+        border-radius: var(--radius);
+        text-align: center;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+    }
+
+    .custom-radio-input:checked+.custom-radio-card {
+        background: var(--primary-green);
+        color: white;
+        border-color: var(--primary-green);
+    }
+
+    .custom-radio-card:hover {
+        border-color: var(--primary-green);
+    }
+</style>
+
+<script>
+    document.getElementById('creativityRange').oninput = function () {
+        document.getElementById('creativityValue').innerHTML = this.value;
+    }
+</script>
+{% endblock %}

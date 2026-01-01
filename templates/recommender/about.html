@@ -1,0 +1,186 @@
+{% extends 'recommender/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="animate-fadeIn">
+    <!-- Hero Section -->
+    <section class="hero section-padding">
+        <div class="geo-accent diamond-shape" style="top: 20%; right: 5%; opacity: 0.1;"></div>
+        <div class="container" style="text-align: center;">
+            <h1 style="margin-bottom: var(--space-md);">OUR PROFESSIONAL <span
+                    style="color: var(--primary-green);">LEGACY</span></h1>
+            <p style="max-width: 800px; margin: 0 auto; font-size: 1.1rem; color: var(--text-muted);">
+                SkillPath AI is dedicated to providing the structural foundation for professional growth through
+                advanced AI-driven pathing and enterprise-ready career architecture.
+            </p>
+        </div>
+    </section>
+
+    <!-- Company Story -->
+    <section class="section-padding">
+        <div class="container">
+            <div style="display: flex; gap: var(--space-xl); align-items: center; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px;">
+                    <img src="{% static 'recommender/images/about.png' %}" alt="Corporate Team"
+                        style="width: 100%; border-radius: var(--radius); box-shadow: var(--shadow-medium);">
+                </div>
+                <div style="flex: 1; min-width: 300px;">
+                    <div class="grid-header" style="margin-bottom: var(--space-md);">
+                        <div class="line"></div>
+                        <h2 style="font-size: 2.5rem; margin: 0;">Our Mission & Vision</h2>
+                    </div>
+                    <p>
+                        Since our inception, SkillPath AI has been at the forefront of career development technology. We
+                        believe that every professional deserves a clear, structured roadmap to success.
+                    </p>
+                    <div
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md); margin-top: var(--space-lg);">
+                        <div class="card" style="padding: var(--space-md);">
+                            <h4 style="color: var(--primary-green); margin-bottom: var(--space-xs); font-size: 1.1rem;">
+                                Mission</h4>
+                            <p style="font-size: 0.9rem; margin: 0;">To bridge the skills gap through data-driven
+                                analysis and personalized pathing.</p>
+                        </div>
+                        <div class="card" style="padding: var(--space-md);">
+                            <h4 style="color: var(--primary-green); margin-bottom: var(--space-xs); font-size: 1.1rem;">
+                                Vision</h4>
+                            <p style="font-size: 0.9rem; margin: 0;">To be the global standard for professional
+                                infrastructure and career development.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values -->
+    <section class="section-padding" style="background: var(--bg-soft);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Core Values</h2>
+                <p>The principles that guide our strategic development.</p>
+            </div>
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg);">
+                <div class="card" style="text-align: center; padding: var(--space-lg);">
+                    <i class="fas fa-handshake"
+                        style="font-size: 2.5rem; color: var(--primary-green); margin-bottom: var(--space-md);"></i>
+                    <h3 style="font-size: 1.5rem;">Integrity</h3>
+                    <p style="font-size: 0.95rem;">Absolute transparency in our recommendations and data processing
+                        algorithms.</p>
+                </div>
+                <div class="card" style="text-align: center; padding: var(--space-lg);">
+                    <i class="fas fa-lightbulb"
+                        style="font-size: 2.5rem; color: var(--primary-green); margin-bottom: var(--space-md);"></i>
+                    <h3 style="font-size: 1.5rem;">Innovation</h3>
+                    <p style="font-size: 0.95rem;">Continuously evolving our neural core to meet the demands of the
+                        modern workforce.</p>
+                </div>
+                <div class="card" style="text-align: center; padding: var(--space-lg);">
+                    <i class="fas fa-chart-line"
+                        style="font-size: 2.5rem; color: var(--primary-green); margin-bottom: var(--space-md);"></i>
+                    <h3 style="font-size: 1.5rem;">Excellence</h3>
+                    <p style="font-size: 0.95rem;">Striving for the highest standards in career architecture and
+                        learning delivery.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategy Diagram/Approach -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Approach</h2>
+                <p>A structured framework for professional evolution.</p>
+            </div>
+            <div
+                style="display: flex; justify-content: space-between; align-items: start; gap: var(--space-md); position: relative; flex-wrap: wrap;">
+                <div
+                    style="position: absolute; top: 40px; left: 10%; right: 10%; height: 2px; background: var(--border-gray); z-index: 0; display: block;">
+                </div>
+                <div style="flex: 1; text-align: center; position: relative; z-index: 1; min-width: 150px;">
+                    <div
+                        style="width: 80px; height: 80px; background: var(--primary-green); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-sm); font-weight: 800; font-size: 1.5rem; box-shadow: var(--shadow-medium);">
+                        01</div>
+                    <h4 style="margin-bottom: var(--space-xs);">Analysis</h4>
+                    <p style="font-size: 0.9rem;">Deep neural scan of current professional stats and skill sets.</p>
+                </div>
+                <div style="flex: 1; text-align: center; position: relative; z-index: 1; min-width: 150px;">
+                    <div
+                        style="width: 80px; height: 80px; background: var(--primary-green); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-sm); font-weight: 800; font-size: 1.5rem; box-shadow: var(--shadow-medium);">
+                        02</div>
+                    <h4 style="margin-bottom: var(--space-xs);">Pathing</h4>
+                    <p style="font-size: 0.9rem;">Strategic mapping of growth potential against market demands.</p>
+                </div>
+                <div style="flex: 1; text-align: center; position: relative; z-index: 1; min-width: 150px;">
+                    <div
+                        style="width: 80px; height: 80px; background: var(--primary-green); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-sm); font-weight: 800; font-size: 1.5rem; box-shadow: var(--shadow-medium);">
+                        03</div>
+                    <h4 style="margin-bottom: var(--space-xs);">Execution</h4>
+                    <p style="font-size: 0.9rem;">Deployment of curated learning resources and certifications.</p>
+                </div>
+                <div style="flex: 1; text-align: center; position: relative; z-index: 1; min-width: 150px;">
+                    <div
+                        style="width: 80px; height: 80px; background: var(--primary-green); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-sm); font-weight: 800; font-size: 1.5rem; box-shadow: var(--shadow-medium);">
+                        04</div>
+                    <h4 style="margin-bottom: var(--space-xs);">Evolution</h4>
+                    <p style="font-size: 0.9rem;">Continuous monitoring and scaling of professional readiness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section-padding" style="background: var(--bg-soft);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Expert Leadership</h2>
+                <p>The strategic minds behind our career infrastructure.</p>
+            </div>
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg);">
+                <div class="card" style="text-align: center; padding: var(--space-xl) var(--space-md);">
+                    <div
+                        style="width: 120px; height: 120px; background: var(--white); border: 2px solid var(--border-gray); border-radius: 50%; margin: 0 auto var(--space-md); display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-subtle);">
+                        <i class="fas fa-user-tie" style="font-size: 4rem; color: var(--primary-green);"></i>
+                    </div>
+                    <h3 style="margin-bottom: var(--space-xs); font-size: 1.5rem;">Robert Sterling</h3>
+                    <p
+                        style="color: var(--primary-green); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: var(--space-sm);">
+                        Chief Executive Officer</p>
+                    <p style="font-size: 0.9rem; margin-top: var(--space-sm);">20+ years in corporate strategy and
+                        organizational
+                        development.</p>
+                </div>
+                <div class="card" style="text-align: center; padding: var(--space-xl) var(--space-md);">
+                    <div
+                        style="width: 120px; height: 120px; background: var(--white); border: 2px solid var(--border-gray); border-radius: 50%; margin: 0 auto var(--space-md); display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-subtle);">
+                        <i class="fas fa-user-cog" style="font-size: 4rem; color: var(--primary-green);"></i>
+                    </div>
+                    <h3 style="margin-bottom: var(--space-xs); font-size: 1.5rem;">Elena Vance</h3>
+                    <p
+                        style="color: var(--primary-green); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: var(--space-sm);">
+                        Chief Technology Officer</p>
+                    <p style="font-size: 0.9rem; margin-top: var(--space-sm);">Expert in neural networking and AI-driven
+                        skill
+                        analysis.</p>
+                </div>
+                <div class="card" style="text-align: center; padding: var(--space-xl) var(--space-md);">
+                    <div
+                        style="width: 120px; height: 120px; background: var(--white); border: 2px solid var(--border-gray); border-radius: 50%; margin: 0 auto var(--space-md); display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-subtle);">
+                        <i class="fas fa-user-shield" style="font-size: 4rem; color: var(--primary-green);"></i>
+                    </div>
+                    <h3 style="margin-bottom: var(--space-xs); font-size: 1.5rem;">Marcus Thorne</h3>
+                    <p
+                        style="color: var(--primary-green); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: var(--space-sm);">
+                        Director of Global Strategy</p>
+                    <p style="font-size: 0.9rem; margin-top: var(--space-sm);">Architect of enterprise-ready
+                        professional learning
+                        frameworks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
