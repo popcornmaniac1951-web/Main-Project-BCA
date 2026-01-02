@@ -3,16 +3,29 @@
 :root {
     /* Corporate Palette */
     --primary-green: #1E7F43;
-    --dark-green: #145A32;
-    --accent-green: #6FBF8E;
-    --bg-soft: #F2F4F3;
-    --text-dark: #1F1F1F;
-    --text-muted: #575757;
-    --border-gray: #E1E5E3;
-    --white: #FFFFFF;
+    --white: #ffffff;
+    --border-gray: #eaedf0;
+    --bg-soft: #f4f7f9;
+    --text-dark: #1a1e23;
+    --text-muted: #64748b;
 
-    /* Status Colors */
-    --success: #28a745;
+    /* Pitch.io Inspired Pastel Palette */
+    --pitch-lavender: #f1f0ff;
+    --pitch-yellow: #fff9db;
+    --pitch-blue: #e7f5ff;
+    --pitch-green: #ebfbee;
+    --pitch-pink: #fff0f6;
+    --pitch-sidebar: #ffffff;
+    --pitch-active: #5c5cfc;
+
+    /* Dashboard Layout */
+    --sidebar-width: 260px;
+    --header-height: 70px;
+
+    /* Modern Infrastructure Palette Original (maintained for compatibility) */
+    --primary-green: #1e7f43;
+    --accent-green: #34a853;
+    --dark-green: #145a32;
     --error: #dc3545;
     --warning: #ffc107;
     --info: #17a2b8;
@@ -1050,3 +1063,8 @@ footer .footer-links a:hover {
 .owl-item.center {
     opacity: 1;
 }
+
+/* Dashboard layout overrides */
+/* .dashboard-page .main-content padding handled by global style */
+
+/* Dashboard styles removed in favor of standard container layout */

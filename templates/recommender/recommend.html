@@ -4,94 +4,317 @@
 {% block title %}Career Assessment - Analysis Protocol{% endblock %}
 
 {% block content %}
-<div class="form-group" style="padding-top: 2rem;">
-    <label
-        style="display: flex; align-items: center; gap: 1.2rem; cursor: pointer; font-weight: 700; font-size: 0.9rem;">
-        <input type="checkbox" name="leadership_interest"
-            style="width: 20px; height: 20px; accent-color: var(--primary-green);">
-        LEADERSHIP & STRATEGIC OVERSIGHT INTEREST
-    </label>
-</div>
-</div>
-</div>
+<div class="container section-padding">
+    <div style="text-align: center; margin-bottom: 3rem;">
+        <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Career Analysis Protocol</h1>
+        <p style="font-size: 1.1rem; max-width: 700px; margin: 0 auto; color: var(--text-muted);">
+            Step <span id="currentStepDisplay">1</span> of 3: <span id="stepTitle">Select Professional Interests</span>
+        </p>
 
-<div style="text-align: center; margin-top: 5rem; border-top: 1px solid var(--border-gray); padding-top: 4rem;">
-    <button type="submit" class="btn btn-primary" style="padding: 1.2rem 4.5rem; font-size: 1.1rem;">Execute Analysis
-        Protocol</button>
-    <p style="margin-top: 1.5rem; color: var(--text-muted); font-size: 0.85rem;">
-        Note: AI correlate logic will process all configuration points to identify optimal career
-        vectors.
-    </p>
-</div>
-</form>
-</div>
-</div>
+        <!-- Progress Bar -->
+        <div class="wizard-progress-track">
+            <div class="wizard-progress-fill" id="progressBar"></div>
+        </div>
+    </div>
+
+    <form method="post" action="{% url 'recommend' %}" class="assessment-form" id="assessmentForm"
+        style="max-width: 800px; margin: 0 auto;">
+        {% csrf_token %}
+
+        <!-- Step 1: Core Interests -->
+        <div class="wizard-step active" id="step1">
+            <div class="card" style="margin-bottom: 2rem; padding: 2rem;">
+                <h3 style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: 1.3rem;">
+                    <i class="fas fa-heart" style="color: var(--primary-green);"></i> Professional Interests
+                </h3>
+                <div
+                    style="background: var(--bg-soft); padding: 1.5rem; border-radius: var(--radius); border: 1px solid var(--border-gray);">
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem; font-weight: 700;">Select areas that energize you:
+                    </p>
+                    <div class="grid-checkboxes"
+                        style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem;">
+                        {% for interest in interests %}
+                        <label>
+                            <input type="checkbox" name="interests" value="{{ interest.id }}"
+                                data-name="{{ interest.name }}">
+                            {{ interest.name }}
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="wizard-nav">
+                <div></div> <!-- Spacer -->
+                <button type="button" class="btn btn-primary next-step" onclick="nextStep(2)">Next: Skills Inventory <i
+                        class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Step 2: Skills Inventory -->
+        <div class="wizard-step" id="step2">
+            <div class="card" style="margin-bottom: 2rem; padding: 2rem;">
+                <h3 style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: 1.3rem;">
+                    <i class="fas fa-tools" style="color: var(--primary-green);"></i> Skills Inventory
+                </h3>
+                <div
+                    style="background: var(--bg-soft); padding: 1.5rem; border-radius: var(--radius); border: 1px solid var(--border-gray);">
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem; font-weight: 700;">Select your current
+                        competencies (Filtered by Interest):</p>
+                    <div class="grid-checkboxes" id="skillsContainer"
+                        style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem;">
+                        {% for skill in skills %}
+                        <label class="skill-item" data-category="{{ skill.category }}">
+                            <input type="checkbox" name="skills" value="{{ skill.id }}">
+                            {{ skill.name }}
+                        </label>
+                        {% endfor %}
+                    </div>
+                    <div id="noSkillsMessage"
+                        style="display: none; color: var(--text-muted); padding: 1rem; text-align: center;">
+                        <i class="fas fa-info-circle"></i> No specific skills found for selected interests. Showing all
+                        availble skills.
+                    </div>
+                </div>
+            </div>
+            <div class="wizard-nav">
+                <button type="button" class="btn btn-outline" onclick="prevStep(1)"><i class="fas fa-arrow-left"></i>
+                    Back</button>
+                <button type="button" class="btn btn-primary next-step" onclick="nextStep(3)">Next: Preferences <i
+                        class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Step 3: Preferences & Style -->
+        <div class="wizard-step" id="step3">
+            <div class="card" style="margin-bottom: 2rem; padding: 2rem;">
+                <h3 style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: 1.3rem;">
+                    <i class="fas fa-sliders-h" style="color: var(--primary-green);"></i> Work Style & Parameters
+                </h3>
+
+                <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <!-- Education Level -->
+                    <div class="form-group">
+                        <label style="display: block; font-weight: 700; margin-bottom: 0.5rem;">Education Level</label>
+                        {{ form.education_level }}
+                    </div>
+
+                    <!-- Work Type -->
+                    <div class="form-group">
+                        <label style="display: block; font-weight: 700; margin-bottom: 0.5rem;">Preferred Work
+                            Environment</label>
+                        {{ form.preferred_work_type }}
+                    </div>
+
+                    <!-- Creativity -->
+                    <div class="form-group">
+                        <label style="display: block; font-weight: 700; margin-bottom: 0.5rem;">Creativity Level
+                            (1-10)</label>
+                        {{ form.creativity_level }}
+                    </div>
+
+                    <!-- Stress Tolerance -->
+                    <div class="form-group">
+                        <label style="display: block; font-weight: 700; margin-bottom: 0.5rem;">High Stress
+                            Tolerance?</label>
+                        {{ form.stress_tolerance }}
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top: 1.5rem;">
+                    <label style="display: block; font-weight: 700; margin-bottom: 0.5rem;">Preferred Work Style</label>
+                    {{ form.work_style }}
+                </div>
+
+                <div class="form-group"
+                    style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-gray);">
+                    <label
+                        style="display: flex; align-items: center; gap: 1rem; cursor: pointer; font-weight: 700; background: var(--bg-soft); padding: 1rem; border-radius: var(--radius); border: 1px solid var(--border-gray);">
+                        {{ form.leadership_interest }}
+                        <span>Interest in Leadership & Strategic Roles</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="wizard-nav">
+                <button type="button" class="btn btn-outline" onclick="prevStep(2)"><i class="fas fa-arrow-left"></i>
+                    Back</button>
+                <button type="submit" class="btn btn-primary"
+                    style="padding: 1.2rem 4rem; font-size: 1.1rem; box-shadow: 0 10px 30px rgba(30, 127, 67, 0.3);">
+                    Initialize Analysis Protocol <i class="fas fa-check-circle" style="margin-left: 0.5rem;"></i>
+                </button>
+            </div>
+            <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem; text-align: center;">AI processing
+                time: ~2.4 seconds</p>
+        </div>
+    </form>
 </div>
 
 <style>
-    .custom-check-card {
-        padding: 1.5rem;
-        border: 1px solid var(--border-gray);
-        border-radius: 8px;
-        font-weight: 700;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        gap: 12px;
+    /* Wizard Styles */
+    .wizard-step {
+        display: none;
+        animation: fadeIn 0.5s ease;
     }
 
-    .check-box {
-        width: 20px;
-        height: 20px;
-        border: 2px solid var(--border-gray);
-        border-radius: 4px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.7rem;
-        color: #fff;
+    .wizard-step.active {
+        display: block;
     }
 
-    .custom-check-input:checked+.custom-check-card {
-        border-color: var(--primary-green);
-        background: rgba(30, 127, 67, 0.05);
-        color: var(--primary-green);
+    .wizard-progress-track {
+        max-width: 400px;
+        height: 6px;
+        background: #e0e0e0;
+        margin: 1.5rem auto;
+        border-radius: 3px;
+        overflow: hidden;
     }
 
-    .custom-check-input:checked+.custom-check-card .check-box {
+    .wizard-progress-fill {
+        height: 100%;
         background: var(--primary-green);
-        border-color: var(--primary-green);
+        width: 33%;
+        transition: width 0.4s ease;
     }
 
-    .custom-check-card:hover {
-        border-color: var(--primary-green);
-        background: rgba(30, 127, 67, 0.02);
+    .wizard-nav {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
     }
 
-    .custom-radio-card {
-        padding: 1rem;
+    /* Form Styles */
+    .assessment-form select,
+    .assessment-form input[type="text"],
+    .assessment-form input[type="number"] {
+        width: 100%;
+        padding: 0.8rem 1rem;
         border: 1px solid var(--border-gray);
         border-radius: var(--radius);
-        text-align: center;
-        font-weight: 600;
+        font-family: var(--font-body);
+        font-size: 1rem;
+        background: var(--white);
+    }
+
+    .assessment-form select:focus,
+    .assessment-form input:focus {
+        border-color: var(--primary-green);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(30, 127, 67, 0.1);
+    }
+
+    .grid-checkboxes label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
         font-size: 0.9rem;
-        transition: all 0.3s ease;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 4px;
+        transition: background 0.2s;
     }
 
-    .custom-radio-input:checked+.custom-radio-card {
-        background: var(--primary-green);
-        color: white;
-        border-color: var(--primary-green);
+    .grid-checkboxes label:hover {
+        background: rgba(30, 127, 67, 0.05);
     }
 
-    .custom-radio-card:hover {
-        border-color: var(--primary-green);
+    .grid-checkboxes input[type="checkbox"] {
+        accent-color: var(--primary-green);
+        width: 18px;
+        height: 18px;
+    }
+
+    @media (max-width: 768px) {
+        .form-grid {
+            grid-template-columns: 1fr !important;
+        }
     }
 </style>
 
 <script>
-    document.getElementById('creativityRange').oninput = function () {
-        document.getElementById('creativityValue').innerHTML = this.value;
+    function nextStep(stepNumber) {
+        // Validation for step 1
+        if (stepNumber === 2) {
+            const interests = document.querySelectorAll('input[name="interests"]:checked');
+            if (interests.length === 0) {
+                alert('Please select at least one interest to proceed.');
+                return;
+            }
+            filterSkills(interests);
+        }
+
+        switchStep(stepNumber);
+    }
+
+    function prevStep(stepNumber) {
+        switchStep(stepNumber);
+    }
+
+    function switchStep(stepNumber) {
+        // Hide all steps
+        document.querySelectorAll('.wizard-step').forEach(el => el.classList.remove('active'));
+        // Show target step
+        document.getElementById('step' + stepNumber).classList.add('active');
+
+        // Update Header
+        document.getElementById('currentStepDisplay').innerText = stepNumber;
+        const titles = { 1: 'Select Professional Interests', 2: 'Skills Inventory', 3: 'Work Style & Parameters' };
+        document.getElementById('stepTitle').innerText = titles[stepNumber];
+
+        // Update Progress
+        const progress = (stepNumber / 3) * 100;
+        document.getElementById('progressBar').style.width = progress + '%';
+
+        // Scroll to top
+        window.scrollTo(0, 0);
+    }
+
+    function filterSkills(selectedInterests) {
+        // Get list of interest names
+        const interestNames = Array.from(selectedInterests).map(el => el.getAttribute('data-name').toLowerCase());
+        console.log("Selected Interests:", interestNames);
+
+        const skillItems = document.querySelectorAll('.skill-item');
+        let visibleCount = 0;
+
+        skillItems.forEach(item => {
+            const skillCategory = item.getAttribute('data-category').toLowerCase();
+            // Simple string match - if skill category is contained in or equals one of the interest names
+            // OR if interest name is contained in skill category
+            let isMatch = false;
+
+            // "Show All" fallback if generic
+            if (interestNames.includes('all') || interestNames.length === 0) {
+                isMatch = true;
+            } else {
+                // Check if any selected interest matches the skill category
+                for (let i = 0; i < interestNames.length; i++) {
+                    const interest = interestNames[i];
+                    if (skillCategory.includes(interest) || interest.includes(skillCategory)) {
+                        isMatch = true;
+                        break;
+                    }
+                    // Handle mappings like "Business" -> "Management" if needed manually, 
+                    // but for now relying on category naming convention.
+                }
+            }
+
+            if (isMatch) {
+                item.style.display = 'flex';
+                visibleCount++;
+            } else {
+                item.style.display = 'none';
+            }
+        });
+
+        // If strict filtering hides everything (e.g. category mismatch), show all as fallback
+        if (visibleCount === 0) {
+            document.getElementById('noSkillsMessage').style.display = 'block';
+            skillItems.forEach(item => {
+                item.style.display = 'flex';
+            });
+        } else {
+            document.getElementById('noSkillsMessage').style.display = 'none';
+        }
     }
 </script>
 {% endblock %}
