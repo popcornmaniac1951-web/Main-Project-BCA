@@ -64,7 +64,7 @@
                             TECHNICAL STACK
                         </h4>
                         <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                            {% for tool in course.tools_covered.split %}
+                            {% for tool in course.tool_list %}
                             <div class="chip"
                                 style="background: var(--bg-soft); color: var(--text-dark); border: 1px solid var(--border-gray);">
                                 {{ tool|cut:"," }}

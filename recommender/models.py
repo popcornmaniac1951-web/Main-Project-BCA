@@ -147,6 +147,12 @@ class Course(models.Model):
     def prerequisite_list(self):
         return [p.strip() for p in self.prerequisites.split('\n') if p.strip()]
 
+    @property
+    def tool_list(self):
+        if not self.tools_covered:
+            return []
+        return [t.strip() for t in self.tools_covered.split(',') if t.strip()]
+
 class CourseStep(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='steps')
     step_number = models.PositiveIntegerField() # 1, 2, 3, 4
